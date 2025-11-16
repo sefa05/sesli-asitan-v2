@@ -25,15 +25,13 @@ export default function Sidebar() {
       <div className="mb-6 font-semibold text-lg">Çamlıca Diş Kliniği</div>
       <nav className="space-y-2">
         {items.map((it) => (
-          <Link key={it.href} href={it.href}>
-            <a
-              className={
-                "block p-2 rounded " +
-                (pathname === it.href ? "bg-blue-50 text-blue-700" : "text-gray-700 hover:bg-gray-100")
-              }
-            >
-              {it.label}
-            </a>
+          <Link key={it.href} href={it.href}
+            className={
+              "block p-2 rounded " +
+              (pathname === it.href ? "bg-blue-50 text-blue-700" : "text-gray-700 hover:bg-gray-100")
+            }
+          >
+            {it.label}
           </Link>
         ))}
       </nav>
