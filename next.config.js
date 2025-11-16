@@ -1,6 +1,4 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  experimental: {}, // Ensure no invalid experimental options remain
-};
+const nextConfig = {};
 
 module.exports = nextConfig;
