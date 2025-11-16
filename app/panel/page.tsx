@@ -13,7 +13,7 @@ export default function PanelPage() {
   useEffect(() => {
     async function fetchStats() {
       const todayStart = new Date();
-      todayStart.setHours(0,0,0,0);
+      todayStart.setHours(0, 0, 0, 0);
       const todayIso = todayStart.toISOString();
 
       const { data: allToday } = await supabase
@@ -22,8 +22,15 @@ export default function PanelPage() {
         .gte("tarih_saat", todayIso)
         .limit(100);
 
-      const { data: onay } = await supabase.from("randevular").select("*").eq("durum", "onayli");
-      const { data: bek } = await supabase.from("randevular").select("*").eq("durum", "beklemede");
+      const { data: onay } = await supabase
+        .from("randevular")
+        .select("*")
+        .eq("durum", "onayli");
+
+      const { data: bek } = await supabase
+        .from("randevular")
+        .select("*")
+        .eq("durum", "beklemede");
 
       setBugun(allToday?.length ?? 0);
       setOnayli(onay?.length ?? 0);
@@ -44,11 +51,26 @@ export default function PanelPage() {
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-lg font-semibold">Hızlı Erişim</h2>
           <div className="space-x-2">
-            <Link href="/panel/randevular"><a className="bg-blue-600 text-white px-3 py-1 rounded">Randevular</a></Link>
-            <Link href="/panel/sesli-asistan"><a className="bg-green-600 text-white px-3 py-1 rounded">Sesli Asistan</a></Link>
+            <Link
+              href="/panel/randevular"
+              className="bg-blue-600 text-white px-3 py-1 rounded"
+            >
+              Randevular
+            </Link>
+
+            <Link
+              href="/panel/sesli-asistan"
+              className="bg-green-600 text-white px-3 py-1 rounded"
+            >
+              Sesli Asistan
+            </Link>
           </div>
         </div>
-        <p>Panel üzerinden randevuları görüntüleyebilir, düzenleyebilir ve Vapi sesli asistan ile etkileşim sağlayabilirsiniz.</p>
+
+        <p>
+          Panel üzerinden randevuları görüntüleyebilir, düzenleyebilir ve Vapi
+          sesli asistan ile etkileşim sağlayabilirsiniz.
+        </p>
       </div>
     </div>
   );
