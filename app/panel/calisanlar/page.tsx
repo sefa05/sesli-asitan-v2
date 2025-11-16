@@ -11,6 +11,8 @@ type Employee = {
   position: string;
 };
 
+export const runtime = "nodejs";
+
 export default function EmployeesPage() {
   const [employees, setEmployees] = useState<Employee[]>([]);
   const [loading, setLoading] = useState(false);
